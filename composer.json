@@ -77,6 +77,20 @@
         ],
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ],
+        "db:up": [
+            "@php -r \"echo '🔐Aplicando permissões...'.PHP_EOL;\"",
+            "bash -c 'chmod +x ./docker/run-database.sh'",
+            "@php -r \"echo '🚀 Iniciando Postgres via Docker...'.PHP_EOL;\"",
+            "bash ./docker/run-database.sh"
+        ],
+        "db:down": [
+            "@php -r \"echo '🛑 Parando Postgres via Docker...'.PHP_EOL;\"",
+            "bash -c 'docker stop postgres_local >/dev/null 2>&1 || echo \"⚠️  Nenhum container chamado postgres_local está rodando.\"'"
+        ],
+        "db:restart": [
+            "@php -r \"echo '🔄 Reiniciando Postgres via Docker...'.PHP_EOL;\"",
+            "bash -c 'if docker ps -q -f name=postgres_local >/dev/null; then echo \"🛑 Parando container atual...\"; docker stop postgres_local >/dev/null 2>&1; echo \"🚀 Iniciando novamente...\"; docker start postgres_local >/dev/null 2>&1; echo \"✅ Postgres reiniciado com sucesso!\"; else echo \"⚠️  Nenhum container ativo encontrado. Subindo novo...\"; bash docker/run-database; fi'"
         ]
     },
     "extra": {

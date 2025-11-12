@@ -13,7 +13,7 @@ import {
 import { dashboard } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, Users } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -22,17 +22,22 @@ const mainNavItems: NavItem[] = [
         href: dashboard(),
         icon: LayoutGrid,
     },
+    {
+        title: 'Usuários',
+        href: dashboard(),
+        icon: Users,
+    },
 ];
 
 const footerNavItems: NavItem[] = [
     {
         title: 'Repositório',
-        href: 'https://github.com/laravel/react-starter-kit',
+        href: 'https://github.com/vinicius-rech/laravel-boilerplate',
         icon: Folder,
     },
     {
         title: 'Documentação',
-        href: 'https://laravel.com/docs/starter-kits#react',
+        href: 'https://laravel.com/docs',
         icon: BookOpen,
     },
 ];
